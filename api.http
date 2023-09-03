@@ -1,0 +1,139 @@
+@baseUrl = http://localhost:4000
+@transUrl = http://localhost:8004
+# @authAccessToken = Authorization: Bearer {{authLogin.response.body.$.accessToken}}
+@authAccessToken = Authorization: Bearer {{authLogin.response.body.data.$.accessToken}}
+@contentType = Content-Type: application/json
+
+GET {{baseUrl}}
+
+###
+
+# @name authLogin
+POST {{baseUrl}}/auth/login
+{{contentType}}
+
+{
+    "username": "user02",
+    "password": "password"
+}
+
+###
+
+DELETE {{baseUrl}}/userlogins/64f17305b712fadcd7949340
+{{contentType}}
+{{authAccessToken}}
+
+{}
+###
+
+POST {{baseUrl}}/auth/register
+{{contentType}}
+
+{
+    "username": "user02",
+    "password": "password",
+    "email": "user02@email.com",
+    "name": "user02",
+    "surname": "panmee",
+    "role": "user",
+    "img_profile": "5.png",
+    "status": 1
+}
+###
+
+
+
+POST {{baseUrl}}/auth/register
+{{contentType}}
+
+{
+    "username": "admin",
+    "password": "password",
+    "email": "admin@email.com",
+    "name": "admin",
+    "surname": "admin",
+    "role": "admin"
+}
+
+###
+
+GET {{baseUrl}}/
+{{contentType}}
+
+{}
+
+
+###
+
+GET {{baseUrl}}/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTM1NDQ1MTEsImV4cCI6MTY5MzU0ODExMSwiYXVkIjoiNjRmMTM3NDNhZTRiODc5YzE3ZTUwNWM1In0.NnipSr2VqIEUtvdp752e9T6Cis6FbgzMvDsxSa2N1gY
+
+###
+
+GET {{baseUrl}}/users/me
+{{authAccessToken}}
+
+###
+
+POST {{baseUrl}}/auth/refresh-token
+{{authAccessToken}}
+
+###
+
+
+POST {{baseUrl}}/articles
+{{contentType}}
+{{authAccessToken}}
+
+{
+    "title": "test add new 2",
+    "description": "content 2"
+}
+
+
+###
+
+GET {{baseUrl}}/articles
+{{contentType}}
+{{authAccessToken}}
+
+###
+
+GET {{baseUrl}}/articles/64f287da3e612ccabf090444
+{{contentType}}
+{{authAccessToken}}
+
+
+###
+
+PATCH {{baseUrl}}/articles/64f287da3e612ccabf090444
+{{contentType}}
+{{authAccessToken}}
+
+{
+    "title": "test update item 3",
+    "description": "contest 3333"
+}
+
+
+###
+
+DELETE {{baseUrl}}/articles/64f287ce3e612ccabf090440
+{{contentType}}
+{{authAccessToken}}
+
+{}
+
+
+###
+
+GET {{transUrl}}/trans/all
+{{contentType}}
+{{authAccessToken}}
+
+
+###
+
+GET {{baseUrl}}/userlogins
+{{contentType}}
+{{authAccessToken}}

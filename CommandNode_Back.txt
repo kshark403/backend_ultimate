@@ -1,0 +1,30 @@
+
+npm init -y
+
+// -D is for devDependencies
+npm i -D nodemon
+
+// ts-node = to run .ts file
+npm i -D ts-node
+
+// ts-node = to run typescript
+npm i -D typescript @types/node
+
+// -S is for --save
+npm i -S fastify
+npm i -S fastify-cors
+
+npm i --save-dev @types/fastify-cors`
+
+npm i -S dotenv
+
+
+npm i -D mongoose
+
+npm i -S bcrypt
+npm i -D @types/bcrypt
+
+npm i -S jsonwebtoken
+npm i -D @types/jsonwebtoken
+
+docker run -d -it --rm --name mongo-express-ct1 -e ME_CONFIG_MONGODB_ADMINUSERNAME=root -e ME_CONFIG_MONGODB_ADMINPASSWORD=example -e ME_CONFIG_MONGODB_URL=mongodb://root:example@192.168.2.37:27017 -p 8081:8081 mongo-express
